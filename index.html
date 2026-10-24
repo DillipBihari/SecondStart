@@ -3,21 +3,239 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Current Date and Time</title>
-</head>
-<body>
-  <h1>Current Date and Time</h1>
-  <time id="clock"></time>
-
-  <script>
-    const clock = document.getElementById("clock");
-
-    function updateClock() {
-      clock.textContent = new Date().toLocaleString();
+  <meta name="theme-color" content="#0b3d2e">
+  <title>Christmas Around the World</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      font-family: Georgia, "Times New Roman", serif;
+      background: #092e25;
+      color: #fff8e8;
     }
 
-    updateClock();
-    setInterval(updateClock, 1000);
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      margin: 0;
+      padding: 48px 20px;
+      overflow-x: hidden;
+      background:
+        radial-gradient(ellipse at 50% 0%, rgb(34 104 68 / 70%), transparent 55%),
+        linear-gradient(160deg, #0b3d2e 0%, #092e25 55%, #071f24 100%);
+    }
+
+    body::before,
+    body::after {
+      position: fixed;
+      inset: -100% 0 0;
+      z-index: -1;
+      content: "";
+      pointer-events: none;
+      background-image: radial-gradient(2px 2px at 20px 30px, #fff 50%, transparent),
+        radial-gradient(2px 2px at 80px 100px, #fff 50%, transparent),
+        radial-gradient(3px 3px at 150px 50px, #fff 50%, transparent);
+      background-size: 200px 180px;
+      opacity: 0.48;
+      animation: snowfall 18s linear infinite;
+    }
+
+    body::after {
+      background-size: 280px 240px;
+      opacity: 0.28;
+      animation-duration: 28s;
+      animation-delay: -9s;
+    }
+
+    @keyframes snowfall {
+      to {
+        transform: translateY(100vh);
+      }
+    }
+
+    main {
+      width: min(900px, 100%);
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .greeting {
+      margin: 0 0 8px;
+      color: #f4cf77;
+      font-size: 1rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(2.2rem, 7vw, 4.5rem);
+      font-weight: 500;
+    }
+
+    .intro {
+      margin: 12px 0 36px;
+      color: #d4e5d8;
+      font-family: Arial, sans-serif;
+    }
+
+    .clocks {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 18px;
+    }
+
+    .clock-card,
+    .countdown {
+      border: 1px solid rgb(244 207 119 / 42%);
+      border-radius: 18px;
+      background: rgb(4 29 25 / 72%);
+      box-shadow: 0 12px 35px rgb(0 0 0 / 18%);
+      backdrop-filter: blur(5px);
+    }
+
+    .clock-card {
+      padding: 26px 18px;
+    }
+
+    .clock-card h2 {
+      margin: 0 0 14px;
+      color: #f4cf77;
+      font-size: 1.45rem;
+      font-weight: 500;
+    }
+
+    .clock-card time {
+      display: block;
+      font-family: Arial, sans-serif;
+      font-size: clamp(1rem, 3vw, 1.15rem);
+      font-variant-numeric: tabular-nums;
+      line-height: 1.6;
+    }
+
+    .countdown {
+      margin-top: 26px;
+      padding: 24px 18px;
+    }
+
+    .countdown h2 {
+      margin: 0 0 18px;
+      color: #f4cf77;
+      font-size: 1.6rem;
+      font-weight: 500;
+    }
+
+    .countdown-values {
+      display: flex;
+      justify-content: center;
+      gap: clamp(12px, 5vw, 42px);
+      font-family: Arial, sans-serif;
+    }
+
+    .countdown-values div {
+      min-width: 52px;
+    }
+
+    .countdown-values span {
+      display: block;
+      color: #fff;
+      font-size: clamp(1.8rem, 6vw, 2.8rem);
+      font-variant-numeric: tabular-nums;
+      font-weight: 700;
+    }
+
+    .countdown-values small {
+      color: #d4e5d8;
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <p class="greeting" aria-hidden="true">✦ Season's Greetings ✦</p>
+    <h1>Christmas Around the World</h1>
+    <p class="intro">Local date and time, updated every second</p>
+
+    <section class="clocks" aria-label="Current local times">
+      <article class="clock-card">
+        <h2>Moscow</h2>
+        <time id="moscow-clock" aria-live="off"></time>
+      </article>
+      <article class="clock-card">
+        <h2>Beijing</h2>
+        <time id="beijing-clock" aria-live="off"></time>
+      </article>
+      <article class="clock-card">
+        <h2>Washington, D.C.</h2>
+        <time id="washington-clock" aria-live="off"></time>
+      </article>
+    </section>
+
+    <section class="countdown" aria-labelledby="countdown-title">
+      <h2 id="countdown-title">Countdown to Christmas</h2>
+      <div class="countdown-values" id="countdown" aria-live="off">
+        <div><span id="days">0</span><small>Days</small></div>
+        <div><span id="hours">00</span><small>Hours</small></div>
+        <div><span id="minutes">00</span><small>Minutes</small></div>
+        <div><span id="seconds">00</span><small>Seconds</small></div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const clocks = [
+      ["moscow-clock", "Europe/Moscow"],
+      ["beijing-clock", "Asia/Shanghai"],
+      ["washington-clock", "America/New_York"]
+    ].map(([id, timeZone]) => ({
+      element: document.getElementById(id),
+      formatter: new Intl.DateTimeFormat(undefined, {
+        timeZone,
+        dateStyle: "full",
+        timeStyle: "medium",
+        hourCycle: "h23"
+      })
+    }));
+
+    function updateClocks() {
+      const now = new Date();
+
+      for (const { element, formatter } of clocks) {
+        element.textContent = formatter.format(now);
+      }
+
+      const christmasYear = now.getMonth() === 11 && now.getDate() <= 25
+        ? now.getFullYear()
+        : now.getFullYear() + 1;
+      const christmas = new Date(christmasYear, 11, 25);
+      const secondsLeft = Math.max(0, Math.floor((christmas - now) / 1000));
+      const days = Math.floor(secondsLeft / 86400);
+      const hours = Math.floor((secondsLeft % 86400) / 3600);
+      const minutes = Math.floor((secondsLeft % 3600) / 60);
+      const seconds = secondsLeft % 60;
+
+      document.getElementById("days").textContent = days;
+      document.getElementById("hours").textContent = String(hours).padStart(2, "0");
+      document.getElementById("minutes").textContent = String(minutes).padStart(2, "0");
+      document.getElementById("seconds").textContent = String(seconds).padStart(2, "0");
+    }
+
+    updateClocks();
+    setInterval(updateClocks, 1000);
   </script>
 </body>
 </html>
