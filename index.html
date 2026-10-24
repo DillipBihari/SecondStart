@@ -18,6 +18,7 @@
     }
 
     body {
+      isolation: isolate;
       min-height: 100vh;
       margin: 0;
       padding: 48px 20px;
@@ -30,7 +31,7 @@
     body::before,
     body::after {
       position: fixed;
-      inset: -100% 0 0;
+      inset: 0;
       z-index: -1;
       content: "";
       pointer-events: none;
