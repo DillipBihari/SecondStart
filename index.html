@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#0b3d2e">
-  <title>Christmas Around the World</title>
+  <meta name="theme-color" content="#8f101b">
+  <title>Christmas Countdown 2026</title>
   <style>
     :root {
       color-scheme: dark;
       font-family: Georgia, "Times New Roman", serif;
-      background: #092e25;
+      background: #710d18;
       color: #fff8e8;
     }
 
@@ -21,11 +21,11 @@
       isolation: isolate;
       min-height: 100vh;
       margin: 0;
-      padding: 48px 20px;
+      padding: 48px 20px 120px;
       overflow-x: hidden;
       background:
-        radial-gradient(ellipse at 50% 0%, rgb(34 104 68 / 70%), transparent 55%),
-        linear-gradient(160deg, #0b3d2e 0%, #092e25 55%, #071f24 100%);
+        radial-gradient(ellipse at 50% 0%, rgb(190 43 48 / 55%), transparent 58%),
+        linear-gradient(160deg, #a51b27 0%, #7c111c 55%, #4b0912 100%);
     }
 
     body::before,
@@ -35,19 +35,21 @@
       z-index: -1;
       content: "";
       pointer-events: none;
-      background-image: radial-gradient(2px 2px at 20px 30px, #fff 50%, transparent),
-        radial-gradient(2px 2px at 80px 100px, #fff 50%, transparent),
-        radial-gradient(3px 3px at 150px 50px, #fff 50%, transparent);
+      background-image:
+        radial-gradient(3px 3px at 20px 30px, #fff 50%, transparent 65%),
+        radial-gradient(2px 2px at 80px 100px, #fff 50%, transparent 65%),
+        radial-gradient(3px 3px at 150px 50px, #fff 50%, transparent 65%),
+        radial-gradient(2px 2px at 120px 150px, #fff 50%, transparent 65%);
       background-size: 200px 180px;
-      opacity: 0.48;
-      animation: snowfall 18s linear infinite;
+      opacity: 0.62;
+      animation: snowfall 12s linear infinite;
     }
 
     body::after {
       background-size: 280px 240px;
-      opacity: 0.28;
-      animation-duration: 28s;
-      animation-delay: -9s;
+      opacity: 0.38;
+      animation-duration: 19s;
+      animation-delay: -7s;
     }
 
     @keyframes snowfall {
@@ -57,8 +59,11 @@
     }
 
     main {
+      position: relative;
+      z-index: 1;
       width: min(900px, 100%);
       margin: 0 auto;
+      padding-top: 70px;
       text-align: center;
     }
 
@@ -78,8 +83,47 @@
 
     .intro {
       margin: 12px 0 36px;
-      color: #d4e5d8;
+      color: #ffe0d8;
       font-family: Arial, sans-serif;
+    }
+
+    .bells {
+      position: fixed;
+      top: 64px;
+      z-index: 2;
+      font-size: clamp(1.5rem, 4vw, 2.5rem);
+      filter: drop-shadow(0 0 8px rgb(255 220 116 / 65%));
+      pointer-events: none;
+    }
+
+    .bells-left {
+      left: 18px;
+    }
+
+    .bells-right {
+      right: 18px;
+    }
+
+    .sleigh {
+      position: fixed;
+      top: 8px;
+      left: 0;
+      z-index: 0;
+      font-family: Arial, sans-serif;
+      font-size: clamp(2rem, 5vw, 3rem);
+      white-space: nowrap;
+      filter: drop-shadow(0 0 10px rgb(255 230 160 / 70%));
+      pointer-events: none;
+      animation: sleigh-ride 22s linear infinite;
+    }
+
+    @keyframes sleigh-ride {
+      from {
+        transform: translateX(-120%);
+      }
+      to {
+        transform: translateX(100vw);
+      }
     }
 
     .clocks {
@@ -92,7 +136,7 @@
     .countdown {
       border: 1px solid rgb(244 207 119 / 42%);
       border-radius: 18px;
-      background: rgb(4 29 25 / 72%);
+      background: rgb(71 8 17 / 76%);
       box-shadow: 0 12px 35px rgb(0 0 0 / 18%);
       backdrop-filter: blur(5px);
     }
@@ -148,10 +192,124 @@
     }
 
     .countdown-values small {
-      color: #d4e5d8;
+      color: #ffe0d8;
       font-size: 0.75rem;
       letter-spacing: 0.08em;
       text-transform: uppercase;
+    }
+
+    .tree {
+      position: fixed;
+      bottom: 10px;
+      left: 16px;
+      z-index: 2;
+      width: 76px;
+      height: 112px;
+      pointer-events: none;
+      filter: drop-shadow(0 0 9px rgb(255 224 133 / 35%));
+    }
+
+    .tree-star {
+      position: absolute;
+      top: 0;
+      left: 30px;
+      color: #ffe780;
+      font-size: 18px;
+      text-shadow: 0 0 10px #fff1a0;
+    }
+
+    .tree-layer {
+      position: absolute;
+      left: 50%;
+      width: 0;
+      height: 0;
+      border-right: solid transparent;
+      border-left: solid transparent;
+      transform: translateX(-50%);
+      filter: drop-shadow(0 0 5px rgb(90 255 141 / 35%));
+    }
+
+    .tree-layer-one {
+      top: 19px;
+      border-right-width: 21px;
+      border-bottom: 33px solid #168345;
+      border-left-width: 21px;
+    }
+
+    .tree-layer-two {
+      top: 37px;
+      border-right-width: 29px;
+      border-bottom: 39px solid #11723a;
+      border-left-width: 29px;
+    }
+
+    .tree-layer-three {
+      top: 57px;
+      border-right-width: 37px;
+      border-bottom: 40px solid #0e6032;
+      border-left-width: 37px;
+    }
+
+    .tree-trunk {
+      position: absolute;
+      bottom: 0;
+      left: 32px;
+      width: 12px;
+      height: 18px;
+      border-radius: 2px;
+      background: #81502c;
+    }
+
+    .tree-light {
+      position: absolute;
+      z-index: 1;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      box-shadow: 0 0 9px currentColor;
+      animation: twinkle 1.5s ease-in-out infinite alternate;
+    }
+
+    .tree-light-one {
+      top: 39px;
+      left: 34px;
+      color: #ffe568;
+      background: currentColor;
+    }
+
+    .tree-light-two {
+      top: 58px;
+      left: 22px;
+      color: #ff8b85;
+      background: currentColor;
+      animation-delay: 0.5s;
+    }
+
+    .tree-light-three {
+      top: 67px;
+      left: 46px;
+      color: #8fe8ff;
+      background: currentColor;
+      animation-delay: 0.9s;
+    }
+
+    .tree-light-four {
+      top: 84px;
+      left: 33px;
+      color: #ffe568;
+      background: currentColor;
+      animation-delay: 0.3s;
+    }
+
+    @keyframes twinkle {
+      from {
+        opacity: 0.55;
+        transform: scale(0.8);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1.25);
+      }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -166,19 +324,33 @@
   </style>
 </head>
 <body>
+  <div class="bells bells-left" aria-hidden="true">🔔🎀</div>
+  <div class="bells bells-right" aria-hidden="true">🎀🔔</div>
+  <div class="sleigh" aria-hidden="true">🎅🛷</div>
+  <div class="tree" aria-hidden="true">
+    <span class="tree-star">★</span>
+    <span class="tree-layer tree-layer-one"></span>
+    <span class="tree-layer tree-layer-two"></span>
+    <span class="tree-layer tree-layer-three"></span>
+    <span class="tree-light tree-light-one"></span>
+    <span class="tree-light tree-light-two"></span>
+    <span class="tree-light tree-light-three"></span>
+    <span class="tree-light tree-light-four"></span>
+    <span class="tree-trunk"></span>
+  </div>
   <main>
     <p class="greeting" aria-hidden="true">✦ Season's Greetings ✦</p>
-    <h1>Christmas Around the World</h1>
-    <p class="intro">Local date and time, updated every second</p>
+    <h1>Christmas Countdown 2026</h1>
+    <p class="intro">World clocks and India-time countdown, updated every second</p>
 
-    <section class="clocks" aria-label="Current local times">
+    <section class="clocks" aria-label="Current times around the world">
       <article class="clock-card">
         <h2>Moscow</h2>
         <time id="moscow-clock" aria-live="off"></time>
       </article>
       <article class="clock-card">
-        <h2>Beijing</h2>
-        <time id="beijing-clock" aria-live="off"></time>
+        <h2>India</h2>
+        <time id="india-clock" aria-live="off"></time>
       </article>
       <article class="clock-card">
         <h2>Washington, D.C.</h2>
@@ -187,7 +359,7 @@
     </section>
 
     <section class="countdown" aria-labelledby="countdown-title">
-      <h2 id="countdown-title">Countdown to Christmas</h2>
+      <h2 id="countdown-title">Countdown to Christmas Day · Dec 25, 2026</h2>
       <div class="countdown-values" id="countdown" aria-live="off">
         <div><span id="days">0</span><small>Days</small></div>
         <div><span id="hours">00</span><small>Hours</small></div>
@@ -200,7 +372,7 @@
   <script>
     const clocks = [
       ["moscow-clock", "Europe/Moscow"],
-      ["beijing-clock", "Asia/Shanghai"],
+      ["india-clock", "Asia/Kolkata"],
       ["washington-clock", "America/New_York"]
     ].map(([id, timeZone]) => ({
       element: document.getElementById(id),
@@ -219,10 +391,7 @@
         element.textContent = formatter.format(now);
       }
 
-      const christmasYear = now.getMonth() === 11 && now.getDate() <= 25
-        ? now.getFullYear()
-        : now.getFullYear() + 1;
-      const christmas = new Date(christmasYear, 11, 25);
+      const christmas = Date.UTC(2026, 11, 24, 18, 30);
       const secondsLeft = Math.max(0, Math.floor((christmas - now) / 1000));
       const days = Math.floor(secondsLeft / 86400);
       const hours = Math.floor((secondsLeft % 86400) / 3600);
